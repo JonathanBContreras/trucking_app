@@ -1,0 +1,173 @@
+import 'dart:core';
+
+class TruckNumber{
+  String id;
+  String licensePlate;
+  String state;
+
+  TruckNumber(this.licensePlate,this.state);
+  TruckNumber.withId({this.id,this.licensePlate,this.state});
+
+  Map<String, dynamic> toMap(){
+    final map = Map<String, dynamic>();
+    map["id"] = id;
+    map["licensePlate"] = licensePlate;
+    map["state"] = state;
+    return map;
+  }
+
+  factory TruckNumber.fromMap(Map<String, dynamic> map){
+    return TruckNumber.withId(
+      id: map["id"],
+      licensePlate: map["license_plate"],
+      state: map["state"],
+    );
+  }
+}
+
+class TrailerNumber{
+  String id;
+  String licensePlate;
+  String state;
+
+  TrailerNumber(this.licensePlate,this.state);
+  TrailerNumber.withId({this.id,this.licensePlate,this.state});
+
+  Map<String, dynamic> toMap(){
+    final map = Map<String, dynamic>();
+    map["id"] = id;
+    map["licensePlate"] = licensePlate;
+    map["state"] = state;
+    return map;
+  }
+
+  factory TrailerNumber.fromMap(Map<String, dynamic> map){
+    return TrailerNumber.withId(
+      id: map["id"],
+      licensePlate: map["license_plate"],
+      state: map["state"],
+    );
+  }
+}
+
+class Weight{
+  String id; //truck and trailer number combined
+  double steers;
+  double drives;
+  double trailerTandoms;
+  double tractor;
+  double drvsAndTrtand;
+  double fuelWeight;
+  double grossWeight;
+
+  Weight(this.steers, this.drives, this.trailerTandoms, this.tractor, this.drvsAndTrtand, this.grossWeight, this.fuelWeight);
+  Weight.withId({this.id,this.steers, this.drives, this.trailerTandoms, this.tractor, this.drvsAndTrtand, this.grossWeight, this.fuelWeight});
+
+  Map<String, dynamic> toMap(){
+    final map = Map<String, dynamic>();
+    map["id"] = id;
+    map["steers"] = steers;
+    map["drives"] = drives;
+    map["trailerTandoms"] = trailerTandoms;
+    map["tractor"] = tractor;
+    map["drvsAndTrtand"]  = drvsAndTrtand;
+    map["fuelWeight"] = fuelWeight;
+    map["grossWeight"] = grossWeight;
+    return map;
+  }
+
+  factory Weight.fromMap(Map<String, dynamic> map){
+    return Weight.withId(
+      id: map["id"],
+      steers: map["steers"],
+      drives: map["drives"],
+      trailerTandoms: map["trailerTandoms"],
+      tractor: map["tractor"],
+      drvsAndTrtand: map["drvsAndTrtand"],
+      fuelWeight: map["fuelWeight"],
+      grossWeight: map["grossWeight"],
+    );
+  }
+}
+
+class Address{
+  String streetNameAndNumber;
+  String cityName;
+  String state;
+  String zipcode;
+  String distributorName;
+  String date;
+  String time;
+
+  Address(this.streetNameAndNumber, this.cityName, this.state, this.zipcode, this.distributorName, this.date, this.time);
+
+  Map<String, dynamic> toMap(){
+    final map = Map<String, dynamic>();
+    map["streetNameAndNumber"] = streetNameAndNumber;
+    map["cityName"] = cityName;
+    map["state"] = state;
+    map["zipcode"] = zipcode;
+    map["distributorName"] = distributorName;
+    map["date"] = date;
+    map["time"] = time;
+    return map;
+  }
+}
+
+class PickupLocation extends Address{
+  PickupLocation(String streetNameAndNumber, String cityName, String state, String zipcode, String distributorName, String date, String time) : super(streetNameAndNumber, cityName, state, zipcode, distributorName, date, time);
+}
+class Destination extends Address{
+  Destination(String streetNameAndNumber, String cityName, String state, String zipcode, String distributorName, String date, String time) : super(streetNameAndNumber, cityName, state, zipcode, distributorName, date, time);
+}
+
+class Fuel{
+  String city;
+  String state;
+  String station;
+  String highway;
+  String mileMarker;
+  double odometer;
+  double dieselAmount;
+  double dieselPrice;
+  String def;
+  double startingFuel;
+  double endFuel;
+
+  Fuel(this.city, this.state, this.station, this.highway, this.mileMarker, this.odometer, this.dieselAmount, this.dieselPrice, this.def, this.endFuel, this.startingFuel);
+
+  Map<String, dynamic> toMap(){
+    final map = Map<String, dynamic>();
+    map["city"] = city;
+    map["state"] = state;
+    map["station"] = station;
+    map["highway"] = highway;
+    map["mileMarker"] = mileMarker;
+    map["odometer"] = odometer;
+    map["dieselAmount"] = dieselAmount;
+    map["dieselPrice"] = dieselPrice;
+    map["def"] = def;
+    map["startingFuel"] = startingFuel;
+    map["endFuel"] = endFuel;
+    return map;
+  }
+}
+
+class Arrival{
+  String bolNumber;
+  String poNumber;
+  String ldNumber;
+  String cfNumber;
+  String odometer0;
+  String odometer1;
+  String milesDriven;
+  String seal;
+  String hours;
+  String weight;
+  String pcs;
+  String palletLength;
+  String maxPayload;
+  String expenses;
+
+  Arrival(this.bolNumber, this.poNumber, this.ldNumber, this.cfNumber, this.odometer0, this.odometer1, this.milesDriven, this.seal, this.weight, this.pcs, this.palletLength, this.maxPayload, this.expenses);
+}
