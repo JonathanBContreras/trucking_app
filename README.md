@@ -1,4 +1,4 @@
-# trip_app
+# trucking_app
 
 A new Flutter project.
 
