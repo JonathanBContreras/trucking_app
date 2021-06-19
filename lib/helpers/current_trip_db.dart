@@ -6,12 +6,12 @@ import 'package:trip_app/models/current_trip_model.dart';
 
 class TruckNumberHelper {
 
-  static final TruckNumberHelper instance = TruckNumberHelper._instance();
+  static final TruckHelper instance = TruckHelper._instance();
   static Database _truckDB;
 
-  TruckNumberHelper._instance();
+  TruckHelper._instance();
 
-  String truckNumberTable = 'truckNumberTable';
+  String truckTable = 'truck_table';
   String idCol = 'id';
   String licensePlateCol = 'licensePlate';
   String stateCol = 'stateCol';
@@ -33,22 +33,22 @@ class TruckNumberHelper {
 
   void _createTruckDB(Database db, int version) async {
     await db.execute(
-      'CREATE TABLE $truckNumberTable($idCol TEXT, $licensePlateCol TEXT, $stateCol TEXT)',
+      'CREATE TABLE $truckTable($idCol TEXT, $licensePlateCol TEXT, $stateCol TEXT)',
     );
   }
 
-  Future<List<Map<String, dynamic>>> getTruckNumberMapList() async {
+  Future<List<Map<String, dynamic>>> getTruckMapList() async {
     Database db = await this.db;
-    final List<Map<String, dynamic>> result = await db.query(truckNumberTable);
+    final List<Map<String, dynamic>> result = await db.query(truckTable);
     return result;
   }
 
-  Future<List<TruckNumber>> getTruckNumberList() async {
-    final List<Map<String, dynamic>> TruckNumberList = await getTruckNumberMapList();
+  Future<List<TruckNumber>> getTruckList() async {
+    final List<Map<String, dynamic>> TruckMapList = await getTruckMapList();
 
-    final List<TruckNumber> truckNumberList = [];
-    truckNumberList.forEach(truckNumberMap){
-      truckNumberList.add(TruckNumber.fromMap(truckNumberMap));
+    final List<TruckNumber> truckList = [];
+    truckMapList.forEach(truckMap){
+      truckList.add(TruckNumber.fromMap(truckMap));
     });
     return truckNumberList;
   }
