@@ -1,5 +1,3 @@
-import 'dart:core';
-
 class TruckNumber{
   String id;
   String licensePlate;
@@ -170,4 +168,22 @@ class Arrival{
   String expenses;
 
   Arrival(this.bolNumber, this.poNumber, this.ldNumber, this.cfNumber, this.odometer0, this.odometer1, this.milesDriven, this.seal, this.weight, this.pcs, this.palletLength, this.maxPayload, this.expenses);
+
+  Map<String, dynamic> toMap(){
+    final map = Map<String, dynamic>();
+    map["bolNumber"] = bolNumber;
+    map["poNumber"] = poNumber;
+    map["ldNumber"] = ldNumber;
+    map["cfNumber"] = cfNumber;
+    map["odometer0"] = odometer0;
+    map["odometer1"] = odometer1;
+    map["milesDriven"] = milesDriven;
+    map["seal"] = seal;
+    map["hours"] = hours;
+    map["weight"] = weight;
+    map["pcs"] = pcs;
+    map["palletLength"] = palletLength;
+    map["maxPayload"] = expenses;
+    return map;
+  }
 }
