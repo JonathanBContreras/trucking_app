@@ -4,7 +4,7 @@ import 'package:path_provider/path_provider.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:trip_app/models/current_trip_model.dart';
 
-class TruckNumberHelper {
+class TruckHelper {
 
   static final TruckHelper instance = TruckHelper._instance();
   static Database _truckDB;
@@ -43,23 +43,38 @@ class TruckNumberHelper {
     return result;
   }
 
-  Future<List<TruckNumber>> getTruckList() async {
-    final List<Map<String, dynamic>> TruckMapList = await getTruckMapList();
+  Future<List<TruckModel>> getTruckList() async {
+    final List<Map<String, dynamic>> truckMapList = await getTruckMapList();
 
-    final List<TruckNumber> truckList = [];
-    truckMapList.forEach(truckMap){
-      truckList.add(TruckNumber.fromMap(truckMap));
+    final List<TruckModel> truckList = [];
+    truckMapList.forEach((truckMap){
+      truckList.add(TruckModel.fromMap(truckMap));
     });
-    return truckNumberList;
+    return truckList;
   }
 
-  Future<String> updateTruckNumber(TruckNumber) async{
+  Future<int> insertTruck(TruckModel truck) async {
     Database db = await this.db;
-    final String result = await db.update(
-      truckNumberTable,
-      truckNumber.toMap(),
+    final int result = await db.insert(truckTable, truck.toMap());
+    return result;
+  }
+
+  Future<int> updateTruck(TruckModel truck) async {
+    Database db = await this.db;
+    final int result = await db.update(
+      truckTable,
+      truck.toMap(),
       where: '$idCol = ?',
-      whereArgs: [id],
+      whereArgs: [truck.id],
+    );
+    return result;
+  }
+
+  Future<int> deleteTruck(int id) async {
+    Database db = await this.db;
+    final int result = await db.delete(
+      truckTable,
+      where: '$idCol = ?',
     ); return result;
   }
 }

@@ -1,10 +1,10 @@
-class TruckNumber{
-  String id;
+class TruckModel{
+  int id;
   String licensePlate;
   String state;
 
-  TruckNumber(this.licensePlate,this.state);
-  TruckNumber.withId({this.id,this.licensePlate,this.state});
+  TruckModel(this.licensePlate,this.state);
+  TruckModel.withId({this.id,this.licensePlate,this.state});
 
   Map<String, dynamic> toMap(){
     final map = Map<String, dynamic>();
@@ -14,8 +14,8 @@ class TruckNumber{
     return map;
   }
 
-  factory TruckNumber.fromMap(Map<String, dynamic> map){
-    return TruckNumber.withId(
+  factory TruckModel.fromMap(Map<String, dynamic> map){
+    return TruckModel.withId(
       id: map["id"],
       licensePlate: map["license_plate"],
       state: map["state"],
@@ -24,7 +24,7 @@ class TruckNumber{
 }
 
 class TrailerNumber{
-  String id;
+  int id;
   String licensePlate;
   String state;
 
@@ -49,7 +49,7 @@ class TrailerNumber{
 }
 
 class Weight{
-  String id; //truck and trailer number combined
+  int id; //truck and trailer number combined
   double steers;
   double drives;
   double trailerTandoms;

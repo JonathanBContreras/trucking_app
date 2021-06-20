@@ -3,13 +3,79 @@ import 'dart:async';
 import 'package:trip_app/helpers/current_trip_db.dart';
 import 'package:trip_app/models/current_trip_model.dart';
 import 'package:trip_app/screens/current_trip.dart';
+import 'package:trip_app/screens/truck_entry.dart';
 
 class Truck extends StatefulWidget{
   @override
-  _TruckingNumberState createState() => _TruckingNumberState();
+  _TruckState createState() => _TruckState();
 }
 
-class _TruckingNumberState extends State<TruckingNumber> {
+class _TruckState extends State<Truck> {
 
-  Future<List<>>
+  Future<List<TruckModel>> _truckList;
+
+  @override
+  void initState(){
+    super.initState();
+    _updateTruckList();
+  }
+
+  _updateTruckList(){
+    setState((){
+      _truckList = TruckHelper.instance.getTruckList();
+    });
+  }
+
+  Widget _buildTruck(TruckModel truck) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0)
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Truck Information", style: TextStyle(fontSize: MediaQuery.of(context).size.height / 24)),
+        centerTitle: true,
+      ),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.add),
+        onPressed: () {
+          Navigator.of(context).pop();
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (_) => TruckEntry(
+                updateTruckList: _updateTruckList,
+                ),
+              ),
+            );
+          },
+        ),
+      body: FutureBuilder(
+        future: _truckList,
+        builder: (context, snapshot) {
+          if (!snapshot.hasData) {
+            return Center(
+              child: Text(
+                "Tap Plus Button to Add an Entry",
+                style: TextStyle(
+                  color: Colors.grey[700],
+                  fontSize: MediaQuery.of(context).size.height / 30,
+                ),
+              ),
+            );
+          }
+          return ListView.builder(
+            itemCount: snapshot.data.length,
+            padding: EdgeInsets.fromLTRB(8.0, 8.0, 8.0, 80.0),
+            itemBuilder: (BuildContext context, int index) {
+              return _buildTruck(snapshot.data[index]);
+            },
+          );
+        },
+      ),
+    );
+  }
 }
