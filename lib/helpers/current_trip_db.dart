@@ -13,6 +13,7 @@ class TruckHelper {
 
   String truckTable = 'truck_table';
   String idCol = 'id';
+  String fleetNumCol = 'fleetNum';
   String licensePlateCol = 'licensePlate';
   String stateCol = 'stateCol';
 
@@ -33,7 +34,7 @@ class TruckHelper {
 
   void _createTruckDB(Database db, int version) async {
     await db.execute(
-      'CREATE TABLE $truckTable($idCol TEXT, $licensePlateCol TEXT, $stateCol TEXT)',
+      'CREATE TABLE $truckTable($idCol TEXT,$fleetNumCol TEXT, $licensePlateCol TEXT, $stateCol TEXT)',
     );
   }
 

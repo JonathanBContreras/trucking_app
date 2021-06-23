@@ -28,7 +28,40 @@ class _TruckState extends State<Truck> {
 
   Widget _buildTruck(TruckModel truck) {
     return Padding(
-      padding: const EdgeInsets.all(8.0)
+      padding: const EdgeInsets.all(8.0),
+      child: Container(
+        color: Colors.grey[200],
+        child: Stack(
+          children: [
+            Container(
+              padding: EdgeInsets.symmetric(horizontal: 8.0),
+              margin: EdgeInsets.symmetric(horizontal: 8.0),
+              child: Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text("${truck.fleetNum}", style: TextStyle(fontSize: MediaQuery.of(context).size.height / 20),),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text("License Plate: ${truck.licensePlate}",style: TextStyle(fontSize: MediaQuery.of(context).size.height / 20)),
+                    ],
+                  ),
+                  SizedBox(height: MediaQuery.of(context).size.height / 36),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text("State: ${truck.state}", style: TextStyle(fontSize: MediaQuery.of(context).size.width / 20)),
+                    ],
+                  ),
+                  SizedBox(height: MediaQuery.of(context).size.height / 36)
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 
