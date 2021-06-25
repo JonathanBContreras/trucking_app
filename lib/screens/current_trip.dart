@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:trip_app/helpers/current_trip_db.dart';
 import 'package:trip_app/models/current_trip_model.dart';
-import 'package:trip_app/screens/current_trip.dart';
 import 'package:trip_app/screens/truck_entry.dart';
 
 class Truck extends StatefulWidget{
@@ -30,7 +29,9 @@ class _TruckState extends State<Truck> {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Container(
-        color: Colors.grey[200],
+        decoration: BoxDecoration(
+        color: Colors.blue[200],
+        borderRadius: BorderRadius.all(Radius.circular(10.0))),
         child: Stack(
           children: [
             Container(
@@ -40,19 +41,23 @@ class _TruckState extends State<Truck> {
                 children: [
                   Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: Text("${truck.fleetNum}", style: TextStyle(fontSize: MediaQuery.of(context).size.height / 20),),
+                    child: Text("Fleet Number: ${truck.fleetNum}", style: TextStyle(fontSize: MediaQuery.of(context).size.height / 24),
+                    textAlign: TextAlign.center,
+                    ),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text("License Plate: ${truck.licensePlate}",style: TextStyle(fontSize: MediaQuery.of(context).size.height / 20)),
+                      Text("License Plate: ${truck.licensePlate}",style: TextStyle(fontSize: MediaQuery.of(context).size.height / 36),
+                          textAlign: TextAlign.center
+                      ),
                     ],
                   ),
-                  SizedBox(height: MediaQuery.of(context).size.height / 36),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text("State: ${truck.state}", style: TextStyle(fontSize: MediaQuery.of(context).size.width / 20)),
+                      Text("State: ${truck.state}", style: TextStyle(fontSize: MediaQuery.of(context).size.height / 36),
+                          textAlign: TextAlign.center),
                     ],
                   ),
                   SizedBox(height: MediaQuery.of(context).size.height / 36)

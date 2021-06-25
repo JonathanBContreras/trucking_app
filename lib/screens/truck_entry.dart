@@ -80,32 +80,38 @@ class _TruckEntryState extends State<TruckEntry>{
                     maxLines: null,
                     style: TextStyle(fontSize: MediaQuery.of(context).size.height / 24),
                     decoration: InputDecoration(
-                      labelText: 'Truck Fleet Number',
+                      labelText: 'Fleet Number',
                     ),
                     validator: (input) => input.trim().isEmpty ? "Please Enter a FleetNumber" : null,
                     onSaved: (input) => _fleetNum = input,
                     initialValue: _fleetNum,
                   ),
                 ),
-                TextFormField(
-                  maxLines: null,
-                  style: TextStyle(fontSize: MediaQuery.of(context).size.height / 24),
-                  decoration: InputDecoration(
-                    labelText: 'Truck License Plate',
+                Padding(
+                  padding: const EdgeInsets.all(25.0),
+                  child: TextFormField(
+                    maxLines: null,
+                    style: TextStyle(fontSize: MediaQuery.of(context).size.height / 24),
+                    decoration: InputDecoration(
+                      labelText: 'License Plate',
+                    ),
+                    validator: (input) => input.trim().isEmpty ? "Please Enter a License Plate" : null,
+                    onSaved: (input) => _licensePlate = input,
+                    initialValue: _licensePlate,
                   ),
-                  validator: (input) => input.trim().isEmpty ? "Please Enter a License Plate" : null,
-                  onSaved: (input) => _licensePlate = input,
-                  initialValue: _licensePlate,
                 ),
-                TextFormField(
-                  maxLines: null,
-                  style: TextStyle(fontSize: MediaQuery.of(context).size.height / 24),
-                  decoration: InputDecoration(
-                    labelText: 'Truck License Plate State',
+                Padding(
+                  padding: const EdgeInsets.all(25.0),
+                  child: TextFormField(
+                    maxLines: null,
+                    style: TextStyle(fontSize: MediaQuery.of(context).size.height / 24),
+                    decoration: InputDecoration(
+                      labelText: 'License Plate State',
+                    ),
+                    validator: (input) => input.trim().isEmpty ? "Please Enter a State" : null,
+                    onSaved: (input) => _state = input,
+                    initialValue: _state,
                   ),
-                  validator: (input) => input.trim().isEmpty ? "Please Enter a State" : null,
-                  onSaved: (input) => _state = input,
-                  initialValue: _state,
                 ),
                 Container(
                   margin: EdgeInsets.symmetric(vertical: 25.0),

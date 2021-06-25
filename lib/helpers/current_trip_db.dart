@@ -15,7 +15,7 @@ class TruckHelper {
   String idCol = 'id';
   String fleetNumCol = 'fleetNum';
   String licensePlateCol = 'licensePlate';
-  String stateCol = 'stateCol';
+  String stateCol = 'state';
 
   Future<Database> get db async {
     if (_truckDB == null) {
@@ -34,7 +34,7 @@ class TruckHelper {
 
   void _createTruckDB(Database db, int version) async {
     await db.execute(
-      'CREATE TABLE $truckTable($idCol TEXT,$fleetNumCol TEXT, $licensePlateCol TEXT, $stateCol TEXT)',
+      'CREATE TABLE $truckTable($idCol TEXT, $fleetNumCol TEXT, $licensePlateCol TEXT, $stateCol TEXT)',
     );
   }
 
