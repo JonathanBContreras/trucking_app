@@ -1,24 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'dart:async';
-import 'package:trip_app/helpers/truck_db.dart';
-import 'package:trip_app/models/truck_model.dart';
+import 'package:intl/intl.dart';
+import 'package:trip_app/helpers/trailer_db.dart';
+import 'package:trip_app/models/trailer_model.dart';
 
-class TruckEntry extends StatefulWidget{
+class TrailerEntry extends StatefulWidget{
 
-  final Function updateTruckList;
-  final TruckModel truck;
-  TruckEntry({this.updateTruckList, this.truck});
+  final Function updateTrailerList;
+  final TrailerModel trailer;
+  TrailerEntry({this.updateTrailerList, this.trailer});
 
   @override
-  _TruckEntryState createState() => _TruckEntryState();
+  _TrailerEntryState createState() => _TrailerEntryState();
 }
 
-class _TruckEntryState extends State<TruckEntry>{
+class _TrailerEntryState extends State<TrailerEntry>{
 
   final _formKey = GlobalKey<FormState>();
 
-  String _fleetNum = "";
+  String _trailerNum = "";
   String _licensePlate = "";
   String _state = "";
 
@@ -26,30 +27,30 @@ class _TruckEntryState extends State<TruckEntry>{
   void initState(){
     super.initState();
 
-    if (widget.truck != null){
-      _fleetNum = widget.truck.fleetNum;
-      _licensePlate = widget.truck.licensePlate;
-      _state = widget.truck.state;
+    if (widget.trailer != null){
+      _trailerNum = widget.trailer.trailerNum;
+      _licensePlate = widget.trailer.licensePlate;
+      _state = widget.trailer.state;
     }
   }
 
   delete(){
-    TruckHelper.instance.deleteTruck(widget.truck.id);
-    widget.updateTruckList();
+    TrailerHelper.instance.deleteTrailer(widget.trailer.id);
+    widget.updateTrailerList();
   }
 
   _submit(){
     if(_formKey.currentState.validate()){
       _formKey.currentState.save();
-      print("$_fleetNum, $_licensePlate, $_state");
+      print("$_trailerNum, $_licensePlate, $_state");
     }
-    if(_fleetNum != ""){
-      TruckModel truck = TruckModel(
-      _fleetNum, _licensePlate, _state);
-      if(widget.truck == null){
-        TruckHelper.instance.insertTruck(truck);
+    if(_trailerNum != ""){
+      TrailerModel trailer = TrailerModel(
+          _trailerNum, _licensePlate, _state);
+      if(widget.trailer == null){
+        TrailerHelper.instance.insertTrailer(trailer);
       }
-      widget.updateTruckList();
+      widget.updateTrailerList();
       Navigator.pop(context);
     }
   }
@@ -58,7 +59,7 @@ class _TruckEntryState extends State<TruckEntry>{
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("TRUCK ENTRY", style: TextStyle(fontSize: MediaQuery.of(context).size.height / 24)),
+        title: Text("TRAILER ENTRY", style: TextStyle(fontSize: MediaQuery.of(context).size.height / 24)),
         centerTitle: true,
       ),
       body: GestureDetector(
@@ -80,11 +81,11 @@ class _TruckEntryState extends State<TruckEntry>{
                     maxLines: null,
                     style: TextStyle(fontSize: MediaQuery.of(context).size.height / 24),
                     decoration: InputDecoration(
-                      labelText: 'Fleet Number',
+                      labelText: 'Trailer Number',
                     ),
-                    validator: (input) => input.trim().isEmpty ? "Please Enter a FleetNumber" : null,
-                    onSaved: (input) => _fleetNum = input,
-                    initialValue: _fleetNum,
+                    validator: (input) => input.trim().isEmpty ? "Please Enter a Trailer Number" : null,
+                    onSaved: (input) => _trailerNum = input,
+                    initialValue: _trailerNum,
                   ),
                 ),
                 Padding(
@@ -127,7 +128,7 @@ class _TruckEntryState extends State<TruckEntry>{
                   child: TextButton(
                     onPressed: _submit,
                     child: Text(
-                      "Add to Trucks",
+                      "Add to Trailers",
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: MediaQuery.of(context).size.height / 32,

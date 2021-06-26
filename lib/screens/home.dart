@@ -20,6 +20,40 @@ class _HomeState extends State<Home> {
           centerTitle: true,
         ),
       ),
+      floatingActionButton:
+      Stack(
+          children: [
+            Align(
+              alignment: Alignment.bottomLeft,
+              child: Container(
+                height: 120,
+                width: 120,
+                padding: EdgeInsets.fromLTRB(15.0, 15.0, 15.0, 30.0),
+                child: new FloatingActionButton(
+                    child: Icon(Icons.local_taxi_outlined, size: 60),
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/truck');
+                    }
+                ),
+              ),
+            ),
+
+            Align(
+              alignment: Alignment.bottomRight,
+              child: Container(
+                height: 120,
+                width: 120,
+                padding: EdgeInsets.fromLTRB(15.0, 15.0, 15.0, 30.0),
+                child: new FloatingActionButton(
+                  child: Icon(Icons.subway, size: 60),
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/trailer');
+                  },
+                ),
+              ),
+            ),
+          ]
+      ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

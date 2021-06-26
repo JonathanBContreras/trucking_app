@@ -26,31 +26,6 @@ class TruckModel{
   }
 }
 
-class TrailerNumber{
-  int id;
-  String licensePlate;
-  String state;
-
-  TrailerNumber(this.licensePlate,this.state);
-  TrailerNumber.withId({this.id,this.licensePlate,this.state});
-
-  Map<String, dynamic> toMap(){
-    final map = Map<String, dynamic>();
-    map["id"] = id;
-    map["licensePlate"] = licensePlate;
-    map["state"] = state;
-    return map;
-  }
-
-  factory TrailerNumber.fromMap(Map<String, dynamic> map){
-    return TrailerNumber.withId(
-      id: map["id"],
-      licensePlate: map["license_plate"],
-      state: map["state"],
-    );
-  }
-}
-
 class Weight{
   int id; //truck and trailer number combined
   double steers;

@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:trip_app/helpers/truck_db.dart';
 import 'package:trip_app/models/truck_model.dart';
 import 'package:trip_app/screens/truck_entry.dart';
+import 'package:trip_app/screens/trailer_entry.dart';
 
 class Truck extends StatefulWidget{
   @override
@@ -79,14 +80,39 @@ class _TruckState extends State<Truck> {
       ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
-        onPressed: () {
-          Navigator.of(context).pop();
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (_) => TruckEntry(
-                updateTruckList: _updateTruckList,
-                ),
+          onPressed: () {
+            showDialog(
+              context: context,
+              builder: (context) => AlertDialog(
+                content: Text("Please select Truck or Trailer", style: TextStyle(fontSize: MediaQuery.of(context).size.height / 26)),
+                actions: [
+                  TextButton(
+                    child: Text("Truck", style: TextStyle(fontSize: MediaQuery.of(context).size.height / 24)),
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (_) => TruckEntry(
+                            updateTruckList: _updateTruckList,
+                          ),
+                        ),
+                      );
+                    },
+                  ),
+                  TextButton(
+                    child: Text("Trailer", style: TextStyle(fontSize: MediaQuery.of(context).size.height / 24)),
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (_) => TrailerEntry(),
+                        ),
+                      );
+                    },
+                  ),
+                ],
               ),
             );
           },
