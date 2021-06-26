@@ -26,46 +26,6 @@ class TruckModel{
   }
 }
 
-class Weight{
-  int id; //truck and trailer number combined
-  double steers;
-  double drives;
-  double trailerTandoms;
-  double tractor;
-  double drvsAndTrtand;
-  double fuelWeight;
-  double grossWeight;
-
-  Weight(this.steers, this.drives, this.trailerTandoms, this.tractor, this.drvsAndTrtand, this.grossWeight, this.fuelWeight);
-  Weight.withId({this.id,this.steers, this.drives, this.trailerTandoms, this.tractor, this.drvsAndTrtand, this.grossWeight, this.fuelWeight});
-
-  Map<String, dynamic> toMap(){
-    final map = Map<String, dynamic>();
-    map["id"] = id;
-    map["steers"] = steers;
-    map["drives"] = drives;
-    map["trailerTandoms"] = trailerTandoms;
-    map["tractor"] = tractor;
-    map["drvsAndTrtand"]  = drvsAndTrtand;
-    map["fuelWeight"] = fuelWeight;
-    map["grossWeight"] = grossWeight;
-    return map;
-  }
-
-  factory Weight.fromMap(Map<String, dynamic> map){
-    return Weight.withId(
-      id: map["id"],
-      steers: map["steers"],
-      drives: map["drives"],
-      trailerTandoms: map["trailerTandoms"],
-      tractor: map["tractor"],
-      drvsAndTrtand: map["drvsAndTrtand"],
-      fuelWeight: map["fuelWeight"],
-      grossWeight: map["grossWeight"],
-    );
-  }
-}
-
 class Address{
   String streetNameAndNumber;
   String cityName;
