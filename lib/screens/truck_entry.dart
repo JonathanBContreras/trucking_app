@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'dart:async';
 import 'package:intl/intl.dart';
-import 'package:trip_app/helpers/current_trip_db.dart';
-import 'package:trip_app/models/current_trip_model.dart';
+import 'package:trip_app/helpers/truck_db.dart';
+import 'package:trip_app/models/truck_model.dart';
 
 class TruckEntry extends StatefulWidget{
 
@@ -17,7 +18,6 @@ class TruckEntry extends StatefulWidget{
 class _TruckEntryState extends State<TruckEntry>{
 
   final _formKey = GlobalKey<FormState>();
-  final values = List.filled(7, false);
 
   String _fleetNum = "";
   String _licensePlate = "";
@@ -77,6 +77,7 @@ class _TruckEntryState extends State<TruckEntry>{
                 Padding(
                   padding: const EdgeInsets.all(25.0),
                   child: TextFormField(
+                    inputFormatters: [FilteringTextInputFormatter.allow(RegExp("[0-9+]"))],
                     maxLines: null,
                     style: TextStyle(fontSize: MediaQuery.of(context).size.height / 24),
                     decoration: InputDecoration(
@@ -90,6 +91,7 @@ class _TruckEntryState extends State<TruckEntry>{
                 Padding(
                   padding: const EdgeInsets.all(25.0),
                   child: TextFormField(
+                    maxLength: 8,
                     maxLines: null,
                     style: TextStyle(fontSize: MediaQuery.of(context).size.height / 24),
                     decoration: InputDecoration(
@@ -103,6 +105,8 @@ class _TruckEntryState extends State<TruckEntry>{
                 Padding(
                   padding: const EdgeInsets.all(25.0),
                   child: TextFormField(
+                    inputFormatters: [FilteringTextInputFormatter.deny(RegExp("[0-9+]"))],
+                    maxLength: 2,
                     maxLines: null,
                     style: TextStyle(fontSize: MediaQuery.of(context).size.height / 24),
                     decoration: InputDecoration(

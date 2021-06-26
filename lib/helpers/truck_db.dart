@@ -2,7 +2,7 @@ import 'dart:io';
 import 'dart:async';
 import 'package:path_provider/path_provider.dart';
 import 'package:sqflite/sqflite.dart';
-import 'package:trip_app/models/current_trip_model.dart';
+import 'package:trip_app/models/truck_model.dart';
 
 class TruckHelper {
 

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
-import 'package:trip_app/helpers/current_trip_db.dart';
-import 'package:trip_app/models/current_trip_model.dart';
+import 'package:trip_app/helpers/truck_db.dart';
+import 'package:trip_app/models/truck_model.dart';
 import 'package:trip_app/screens/truck_entry.dart';
 
 class Truck extends StatefulWidget{
