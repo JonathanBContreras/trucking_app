@@ -57,38 +57,6 @@ class Destination extends Address{
   Destination(String streetNameAndNumber, String cityName, String state, String zipcode, String distributorName, String date, String time) : super(streetNameAndNumber, cityName, state, zipcode, distributorName, date, time);
 }
 
-class Fuel{
-  String city;
-  String state;
-  String station;
-  String highway;
-  String mileMarker;
-  double odometer;
-  double dieselAmount;
-  double dieselPrice;
-  String def;
-  double startingFuel;
-  double endFuel;
-
-  Fuel(this.city, this.state, this.station, this.highway, this.mileMarker, this.odometer, this.dieselAmount, this.dieselPrice, this.def, this.endFuel, this.startingFuel);
-
-  Map<String, dynamic> toMap(){
-    final map = Map<String, dynamic>();
-    map["city"] = city;
-    map["state"] = state;
-    map["station"] = station;
-    map["highway"] = highway;
-    map["mileMarker"] = mileMarker;
-    map["odometer"] = odometer;
-    map["dieselAmount"] = dieselAmount;
-    map["dieselPrice"] = dieselPrice;
-    map["def"] = def;
-    map["startingFuel"] = startingFuel;
-    map["endFuel"] = endFuel;
-    return map;
-  }
-}
-
 class Arrival{
   String bolNumber;
   String poNumber;
