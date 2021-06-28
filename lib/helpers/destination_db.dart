@@ -65,13 +65,13 @@ class DestinationHelper {
     return result;
   }
 
-  Future<int> updateDestination(DestinationModel weight) async {
+  Future<int> updateDestination(DestinationModel destination) async {
     Database db = await this.db;
     final int result = await db.update(
       destinationTable,
-      weight.toMap(),
+      destination.toMap(),
       where: '$idCol = ?',
-      whereArgs: [weight.id],
+      whereArgs: [destination.id],
     );
     return result;
   }

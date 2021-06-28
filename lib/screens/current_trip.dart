@@ -71,7 +71,7 @@ class _CurrentTripState extends State<CurrentTrip> {
                 child: Text("Pick Up Location"),
               ),
               onPressed: () {
-                Navigator.pushNamed(context, '/pick_up_location');
+                Navigator.pushNamed(context, '/pickup_location');
               },
             ),
             TextButton.icon(

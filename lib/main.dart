@@ -5,12 +5,14 @@ import 'package:trip_app/screens/trailer.dart';
 import 'package:trip_app/screens/weight.dart';
 import 'package:trip_app/screens/fuel.dart';
 import 'package:trip_app/screens/destination.dart';
+import 'package:trip_app/screens/pick_up_location.dart';
 import 'package:trip_app/screens/current_trip.dart';
 import 'package:trip_app/screens/truck_entry.dart';
 import 'package:trip_app/screens/trailer_entry.dart';
 import 'package:trip_app/screens/weight_entry.dart';
 import 'package:trip_app/screens/fuel_entry.dart';
 import 'package:trip_app/screens/destination_entry.dart';
+import 'package:trip_app/screens/pick_up_location_entry.dart';
 import 'package:flutter/services.dart';
 
 void main(){
@@ -27,11 +29,13 @@ void main(){
       '/weight': (context) => Weight(),
       '/fuel': (context) => Fuel(),
       '/destination': (context) => Destination(),
+      '/pickup_location': (context) => PickupLocation(),
       '/current_trip': (context) => CurrentTrip(),
       '/truck_entry': (context) => TruckEntry(),
       '/trailer_entry':(context) => TrailerEntry(),
       '/weight_entry': (context) => WeightEntry(),
       '/fuel_entry': (context) => FuelEntry(),
       '/destination_entry': (context) => DestinationEntry(),
+      '/pickup_location_entry': (context) => PickupLocationEntry(),
     },
   ));}

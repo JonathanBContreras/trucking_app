@@ -1,4 +1,4 @@
-class DestinationModel{
+class PickupLocationModel {
   int id;
   String streetNameAndNumber;
   String city;
@@ -8,8 +8,8 @@ class DestinationModel{
   String date;
   String time;
 
-  DestinationModel(this.streetNameAndNumber, this.city, this.state, this.zipcode, this.distributor, this.date, this.time);
-  DestinationModel.withId({this.id, this.streetNameAndNumber, this.city, this.state, this.zipcode, this.distributor, this.date, this.time});
+  PickupLocationModel(this.streetNameAndNumber, this.city, this.state, this.zipcode, this.distributor, this.date, this.time);
+  PickupLocationModel.withId({this.id, this.streetNameAndNumber, this.city, this.state, this.zipcode, this.distributor, this.date, this.time});
 
 
   Map<String, dynamic> toMap(){
@@ -24,8 +24,8 @@ class DestinationModel{
     return map;
   }
 
-  factory DestinationModel.fromMap(Map<String, dynamic> map){
-    return DestinationModel.withId(
+  factory PickupLocationModel.fromMap(Map<String, dynamic> map){
+    return PickupLocationModel.withId(
       id: map["id"],
       streetNameAndNumber: map["streetNameAndNumber"],
       city: map["city"],
