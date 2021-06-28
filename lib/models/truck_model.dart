@@ -26,37 +26,6 @@ class TruckModel{
   }
 }
 
-class Address{
-  String streetNameAndNumber;
-  String cityName;
-  String state;
-  String zipcode;
-  String distributorName;
-  String date;
-  String time;
-
-  Address(this.streetNameAndNumber, this.cityName, this.state, this.zipcode, this.distributorName, this.date, this.time);
-
-  Map<String, dynamic> toMap(){
-    final map = Map<String, dynamic>();
-    map["streetNameAndNumber"] = streetNameAndNumber;
-    map["cityName"] = cityName;
-    map["state"] = state;
-    map["zipcode"] = zipcode;
-    map["distributorName"] = distributorName;
-    map["date"] = date;
-    map["time"] = time;
-    return map;
-  }
-}
-
-class PickupLocation extends Address{
-  PickupLocation(String streetNameAndNumber, String cityName, String state, String zipcode, String distributorName, String date, String time) : super(streetNameAndNumber, cityName, state, zipcode, distributorName, date, time);
-}
-class Destination extends Address{
-  Destination(String streetNameAndNumber, String cityName, String state, String zipcode, String distributorName, String date, String time) : super(streetNameAndNumber, cityName, state, zipcode, distributorName, date, time);
-}
-
 class Arrival{
   String bolNumber;
   String poNumber;
